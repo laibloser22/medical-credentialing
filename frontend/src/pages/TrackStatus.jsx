@@ -12,7 +12,7 @@ const TrackStatus = () => {
     useEffect(() => {
         const fetchRequests = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/api/requests/my-requests', {
+                const res = await axios.get('https://medical-credentialing-backend.onrender.com/api/requests/my-requests', {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setRequests(res.data);

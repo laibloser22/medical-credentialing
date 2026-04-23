@@ -15,7 +15,7 @@ const AdminRequests = () => {
 
     const fetchRequests = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/api/requests/all', {
+            const res = await axios.get('https://medical-credentialing-backend.onrender.com/api/requests/all', {
                 headers: { Authorization: 'Bearer ' + token }
             });
             setRequests(res.data);
@@ -28,7 +28,7 @@ const AdminRequests = () => {
     const updateStatus = async (id, status) => {
         try {
             await axios.put(
-                'http://localhost:5000/api/requests/' + id + '/status',
+                'https://medical-credentialing-backend.onrender.com/api/requests/' + id + '/status',
                 { status },
                 { headers: { Authorization: 'Bearer ' + token } }
             );

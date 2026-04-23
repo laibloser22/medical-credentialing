@@ -29,7 +29,7 @@ const SubmitRequest = () => {
             data.append('deadline', formData.deadline);
             if (file) data.append('documents', file);
 
-            await axios.post('http://localhost:5000/api/requests', data, {
+            await axios.post('https://medical-credentialing-backend.onrender.com/api/requests', data, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'multipart/form-data'

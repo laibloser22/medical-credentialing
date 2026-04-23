@@ -20,7 +20,7 @@ const Contact = () => {
         setSuccess('');
 
         try {
-            await axios.post('http://localhost:5000/api/contact', formData);
+            await axios.post('https://medical-credentialing-backend.onrender.com/api/contact', formData);
             setSuccess('Message sent successfully! We will get back to you soon.');
             setFormData({ name: '', email: '', message: '' });
         } catch (err) {

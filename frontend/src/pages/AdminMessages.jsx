@@ -12,7 +12,7 @@ const AdminMessages = () => {
     useEffect(() => {
         const fetchMessages = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/api/contact/all', {
+                const res = await axios.get('https://medical-credentialing-backend.onrender.com/api/contact/all', {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setMessages(res.data);
