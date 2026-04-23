@@ -7,6 +7,9 @@ import Dashboard from './pages/Dashboard';
 import SubmitRequest from './pages/SubmitRequest';
 import TrackStatus from './pages/TrackStatus';
 import Contact from './pages/Contact';
+import AdminDashboard from './pages/AdminDashboard';
+import AdminRequests from './pages/AdminRequests';
+import AdminMessages from './pages/AdminMessages';
 
 function App() {
   return (
@@ -20,6 +23,9 @@ function App() {
           <Route path="/submit-request" element={<SubmitRequest />} />
           <Route path="/track-status" element={<TrackStatus />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/requests" element={<AdminRequests />} />
+          <Route path="/admin/messages" element={<AdminMessages />} />
         </Routes>
       </Router>
     </AuthProvider>
