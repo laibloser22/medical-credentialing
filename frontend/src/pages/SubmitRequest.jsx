@@ -21,21 +21,15 @@ const SubmitRequest = () => {
         setLoading(true);
         setError('');
         setSuccess('');
-
         try {
             const data = new FormData();
             data.append('jobRole', formData.jobRole);
             data.append('description', formData.description);
             data.append('deadline', formData.deadline);
             if (file) data.append('documents', file);
-
             await axios.post('https://medical-credentialing-backend.onrender.com/api/requests', data, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    'Content-Type': 'multipart/form-data'
-                }
+                headers: { Authorization: 'Bearer ' + token, 'Content-Type': 'multipart/form-data' }
             });
-
             setSuccess('Request submitted successfully!');
             setTimeout(() => navigate('/track-status'), 2000);
         } catch (err) {
@@ -44,79 +38,44 @@ const SubmitRequest = () => {
         setLoading(false);
     };
 
+    const inputStyle = { width: '100%', padding: '14px', borderRadius: '4px', border: '1px solid #333', backgroundColor: '#111', color: 'white', fontSize: '0.95rem', boxSizing: 'border-box' };
+    const labelStyle = { display: 'block', marginBottom: '8px', color: '#999', fontSize: '0.85rem', letterSpacing: '1px' };
+
     return (
-        <div style={{ minHeight: '100vh', backgroundColor: '#f0f4ff', padding: '40px' }}>
-            <div style={{ backgroundColor: 'white', padding: '40px', borderRadius: '10px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', maxWidth: '600px', margin: '0 auto' }}>
-                <h2 style={{ color: '#1a73e8', marginBottom: '30px' }}>Submit Credentialing Request</h2>
+        <div style={{ minHeight: '100vh', backgroundColor: '#0a0a0a', color: 'white', padding: '60px' }}>
+            <div style={{ maxWidth: '650px', margin: '0 auto' }}>
+                <button onClick={() => navigate('/dashboard')} style={{ background: 'none', border: 'none', color: '#e74c3c', cursor: 'pointer', marginBottom: '30px', fontSize: '0.9rem', letterSpacing: '1px', fontWeight: '700' }}>
+                    ← BACK TO DASHBOARD
+                </button>
+                <p style={{ color: '#e74c3c', letterSpacing: '3px', fontSize: '0.85rem', fontWeight: '700', marginBottom: '10px' }}>NEW APPLICATION</p>
+                <h2 style={{ fontSize: '2rem', fontWeight: '900', marginBottom: '40px' }}>SUBMIT CREDENTIALING REQUEST</h2>
 
-                {error && <p style={{ color: 'red' }}>{error}</p>}
-                {success && <p style={{ color: 'green' }}>{success}</p>}
+                <div style={{ backgroundColor: '#111111', padding: '40px', borderRadius: '4px', borderTop: '3px solid #e74c3c' }}>
+                    {error && <p style={{ color: '#e74c3c', marginBottom: '20px', padding: '12px', backgroundColor: '#1a0a0a', borderLeft: '3px solid #e74c3c', fontSize: '0.9rem' }}>{error}</p>}
+                    {success && <p style={{ color: '#2ecc71', marginBottom: '20px', padding: '12px', backgroundColor: '#0a1a0a', borderLeft: '3px solid #2ecc71', fontSize: '0.9rem' }}>{success}</p>}
 
-                <form onSubmit={handleSubmit}>
-                    <div style={{ marginBottom: '20px' }}>
-                        <label style={{ display: 'block', marginBottom: '8px', color: '#555' }}>Job Role</label>
-                        <input
-                            type="text"
-                            name="jobRole"
-                            value={formData.jobRole}
-                            onChange={handleChange}
-                            required
-                            placeholder="e.g. Cardiologist"
-                            style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ddd', boxSizing: 'border-box' }}
-                        />
-                    </div>
-
-                    <div style={{ marginBottom: '20px' }}>
-                        <label style={{ display: 'block', marginBottom: '8px', color: '#555' }}>Description</label>
-                        <textarea
-                            name="description"
-                            value={formData.description}
-                            onChange={handleChange}
-                            required
-                            placeholder="Describe your qualifications and experience"
-                            rows="4"
-                            style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ddd', boxSizing: 'border-box' }}
-                        />
-                    </div>
-
-                    <div style={{ marginBottom: '20px' }}>
-                        <label style={{ display: 'block', marginBottom: '8px', color: '#555' }}>Deadline</label>
-                        <input
-                            type="date"
-                            name="deadline"
-                            value={formData.deadline}
-                            onChange={handleChange}
-                            required
-                            style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ddd', boxSizing: 'border-box' }}
-                        />
-                    </div>
-
-                    <div style={{ marginBottom: '20px' }}>
-                        <label style={{ display: 'block', marginBottom: '8px', color: '#555' }}>Upload Documents</label>
-                        <input
-                            type="file"
-                            onChange={(e) => setFile(e.target.files[0])}
-                            style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ddd', boxSizing: 'border-box' }}
-                        />
-                    </div>
-
-                    <div style={{ display: 'flex', gap: '10px' }}>
-                        <button
-                            type="button"
-                            onClick={() => navigate('/dashboard')}
-                            style={{ padding: '12px 20px', backgroundColor: '#gray', color: '#555', border: '1px solid #ddd', borderRadius: '6px', cursor: 'pointer' }}
-                        >
-                            Back
+                    <form onSubmit={handleSubmit}>
+                        <div style={{ marginBottom: '25px' }}>
+                            <label style={labelStyle}>JOB ROLE</label>
+                            <input type="text" name="jobRole" value={formData.jobRole} onChange={handleChange} required placeholder="e.g. Cardiologist" style={inputStyle} />
+                        </div>
+                        <div style={{ marginBottom: '25px' }}>
+                            <label style={labelStyle}>DESCRIPTION</label>
+                            <textarea name="description" value={formData.description} onChange={handleChange} required placeholder="Describe your qualifications and experience" rows="4" style={{ ...inputStyle, resize: 'vertical' }} />
+                        </div>
+                        <div style={{ marginBottom: '25px' }}>
+                            <label style={labelStyle}>DEADLINE</label>
+                            <input type="date" name="deadline" value={formData.deadline} onChange={handleChange} required style={inputStyle} />
+                        </div>
+                        <div style={{ marginBottom: '35px' }}>
+                            <label style={labelStyle}>UPLOAD DOCUMENTS</label>
+                            <input type="file" onChange={(e) => setFile(e.target.files[0])} style={{ ...inputStyle, padding: '10px' }} />
+                        </div>
+                        <button type="submit" disabled={loading} style={{ width: '100%', padding: '14px', backgroundColor: '#e74c3c', color: 'white', border: 'none', borderRadius: '4px', fontSize: '1rem', fontWeight: '700', cursor: 'pointer', letterSpacing: '1px' }}>
+                            {loading ? 'SUBMITTING...' : 'SUBMIT REQUEST →'}
                         </button>
-                        <button
-                            type="submit"
-                            disabled={loading}
-                            style={{ flex: 1, padding: '12px', backgroundColor: '#1a73e8', color: 'white', border: 'none', borderRadius: '6px', fontSize: '1rem', cursor: 'pointer' }}
-                        >
-                            {loading ? 'Submitting...' : 'Submit Request'}
-                        </button>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     );

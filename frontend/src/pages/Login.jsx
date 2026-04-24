@@ -33,49 +33,64 @@ const Login = () => {
     };
 
     return (
-        <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#f0f4ff' }}>
-            <div style={{ backgroundColor: 'white', padding: '40px', borderRadius: '10px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', width: '100%', maxWidth: '400px' }}>
-                <h2 style={{ textAlign: 'center', color: '#1a73e8', marginBottom: '30px' }}>Login</h2>
+        <div style={{ minHeight: '100vh', display: 'flex', backgroundColor: '#0a0a0a' }}>
 
-                {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
+            {/* Left Side */}
+            <div style={{ flex: 1, backgroundColor: '#111111', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '60px', borderRight: '1px solid #222' }}>
+                <h1 style={{ color: '#e74c3c', fontSize: '2rem', fontWeight: '900', letterSpacing: '1px', marginBottom: '10px' }}>QUAD<span style={{ color: 'white' }}>SOLUTIONS</span></h1>
+                <p style={{ color: '#666', fontSize: '0.9rem', letterSpacing: '2px', marginBottom: '50px' }}>MEDICAL CREDENTIALING</p>
+                <h2 style={{ fontSize: '2.5rem', fontWeight: '900', lineHeight: '1.2', marginBottom: '20px' }}>WELCOME <br />BACK</h2>
+                <p style={{ color: '#666', lineHeight: '1.8' }}>Login to manage your credentialing requests and track your application status.</p>
+            </div>
 
-                <form onSubmit={handleSubmit}>
-                    <div style={{ marginBottom: '20px' }}>
-                        <label style={{ display: 'block', marginBottom: '8px', color: '#555' }}>Email</label>
-                        <input
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            required
-                            style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ddd', boxSizing: 'border-box' }}
-                        />
-                    </div>
+            {/* Right Side - Form */}
+            <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '60px' }}>
+                <div style={{ width: '100%', maxWidth: '400px' }}>
+                    <h3 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '8px' }}>Sign In</h3>
+                    <p style={{ color: '#666', marginBottom: '35px', fontSize: '0.9rem' }}>Enter your credentials to continue</p>
 
-                    <div style={{ marginBottom: '20px' }}>
-                        <label style={{ display: 'block', marginBottom: '8px', color: '#555' }}>Password</label>
-                        <input
-                            type="password"
-                            name="password"
-                            value={formData.password}
-                            onChange={handleChange}
-                            required
-                            style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #ddd', boxSizing: 'border-box' }}
-                        />
-                    </div>
+                    {error && <p style={{ color: '#e74c3c', marginBottom: '20px', fontSize: '0.9rem', padding: '12px', backgroundColor: '#1a0a0a', borderLeft: '3px solid #e74c3c' }}>{error}</p>}
 
-                    <button
-                        type="submit"
-                        disabled={loading}
-                        style={{ width: '100%', padding: '12px', backgroundColor: '#1a73e8', color: 'white', border: 'none', borderRadius: '6px', fontSize: '1rem', cursor: 'pointer' }}
-                    >
-                        {loading ? 'Logging in...' : 'Login'}
-                    </button>
-                </form>
+                    <form onSubmit={handleSubmit}>
+                        <div style={{ marginBottom: '20px' }}>
+                            <label style={{ display: 'block', marginBottom: '8px', color: '#999', fontSize: '0.85rem', letterSpacing: '1px' }}>EMAIL ADDRESS</label>
+                            <input
+                                type="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                required
+                                placeholder="you@example.com"
+                                style={{ width: '100%', padding: '14px', borderRadius: '4px', border: '1px solid #333', backgroundColor: '#111', color: 'white', fontSize: '0.95rem', boxSizing: 'border-box' }}
+                            />
+                        </div>
 
-                <p style={{ textAlign: 'center', marginTop: '20px', color: '#555' }}>
-                    Don't have an account? <Link to="/register" style={{ color: '#1a73e8' }}>Register</Link>
-                </p>
+                        <div style={{ marginBottom: '30px' }}>
+                            <label style={{ display: 'block', marginBottom: '8px', color: '#999', fontSize: '0.85rem', letterSpacing: '1px' }}>PASSWORD</label>
+                            <input
+                                type="password"
+                                name="password"
+                                value={formData.password}
+                                onChange={handleChange}
+                                required
+                                placeholder="••••••••"
+                                style={{ width: '100%', padding: '14px', borderRadius: '4px', border: '1px solid #333', backgroundColor: '#111', color: 'white', fontSize: '0.95rem', boxSizing: 'border-box' }}
+                            />
+                        </div>
+
+                        <button
+                            type="submit"
+                            disabled={loading}
+                            style={{ width: '100%', padding: '14px', backgroundColor: '#e74c3c', color: 'white', border: 'none', borderRadius: '4px', fontSize: '1rem', fontWeight: '700', cursor: 'pointer', letterSpacing: '1px' }}
+                        >
+                            {loading ? 'SIGNING IN...' : 'SIGN IN →'}
+                        </button>
+                    </form>
+
+                    <p style={{ textAlign: 'center', marginTop: '25px', color: '#666', fontSize: '0.9rem' }}>
+                        Don't have an account? <Link to="/register" style={{ color: '#e74c3c', fontWeight: '700' }}>Register</Link>
+                    </p>
+                </div>
             </div>
         </div>
     );

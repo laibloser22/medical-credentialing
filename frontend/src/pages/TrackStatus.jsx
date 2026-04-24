@@ -13,7 +13,7 @@ const TrackStatus = () => {
         const fetchRequests = async () => {
             try {
                 const res = await axios.get('https://medical-credentialing-backend.onrender.com/api/requests/my-requests', {
-                    headers: { Authorization: `Bearer ${token}` }
+                    headers: { Authorization: 'Bearer ' + token }
                 });
                 setRequests(res.data);
             } catch (err) {
@@ -25,55 +25,46 @@ const TrackStatus = () => {
     }, [token]);
 
     const getStatusColor = (status) => {
-        if (status === 'approved') return 'green';
-        if (status === 'rejected') return 'red';
-        return 'orange';
+        if (status === 'approved') return '#2ecc71';
+        if (status === 'rejected') return '#e74c3c';
+        return '#f39c12';
     };
 
     return (
-        <div style={{ minHeight: '100vh', backgroundColor: '#f0f4ff', padding: '40px' }}>
+        <div style={{ minHeight: '100vh', backgroundColor: '#0a0a0a', color: 'white', padding: '60px' }}>
             <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
-                    <h2 style={{ color: '#1a73e8' }}>My Requests</h2>
-                    <button
-                        onClick={() => navigate('/dashboard')}
-                        style={{ padding: '10px 20px', backgroundColor: '#1a73e8', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer' }}
-                    >
-                        Back to Dashboard
-                    </button>
-                </div>
+                <button onClick={() => navigate('/dashboard')} style={{ background: 'none', border: 'none', color: '#e74c3c', cursor: 'pointer', marginBottom: '30px', fontSize: '0.9rem', letterSpacing: '1px', fontWeight: '700' }}>
+                    ← BACK TO DASHBOARD
+                </button>
+                <p style={{ color: '#e74c3c', letterSpacing: '3px', fontSize: '0.85rem', fontWeight: '700', marginBottom: '10px' }}>MY APPLICATIONS</p>
+                <h2 style={{ fontSize: '2rem', fontWeight: '900', marginBottom: '40px' }}>TRACK STATUS</h2>
 
-                {loading ? (
-                    <p>Loading...</p>
-                ) : requests.length === 0 ? (
-                    <div style={{ backgroundColor: 'white', padding: '40px', borderRadius: '10px', textAlign: 'center' }}>
-                        <p style={{ color: '#555' }}>No requests found!</p>
-                        <button
-                            onClick={() => navigate('/submit-request')}
-                            style={{ padding: '10px 20px', backgroundColor: '#1a73e8', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer', marginTop: '10px' }}
-                        >
-                            Submit Your First Request
+                {loading && <p style={{ color: '#666' }}>Loading...</p>}
+
+                {!loading && requests.length === 0 && (
+                    <div style={{ backgroundColor: '#111111', padding: '60px', borderRadius: '4px', textAlign: 'center', borderTop: '3px solid #e74c3c' }}>
+                        <p style={{ color: '#666', marginBottom: '20px' }}>No requests found!</p>
+                        <button onClick={() => navigate('/submit-request')} style={{ padding: '12px 25px', backgroundColor: '#e74c3c', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: '700', letterSpacing: '1px' }}>
+                            SUBMIT FIRST REQUEST →
                         </button>
                     </div>
-                ) : (
-                    requests.map((req) => (
-                        <div key={req.id} style={{ backgroundColor: 'white', padding: '20px', borderRadius: '10px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', marginBottom: '20px' }}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <h3 style={{ color: '#1a73e8', margin: 0 }}>{req.jobRole}</h3>
-                                <span style={{ padding: '5px 15px', backgroundColor: getStatusColor(req.status), color: 'white', borderRadius: '20px', fontSize: '0.9rem' }}>
-                                    {req.status.toUpperCase()}
-                                </span>
-                            </div>
-                            <p style={{ color: '#555', marginTop: '10px' }}>{req.description}</p>
-                            <p style={{ color: '#888', fontSize: '0.9rem' }}>
-                                Deadline: {new Date(req.deadline).toLocaleDateString()}
-                            </p>
-                            <p style={{ color: '#888', fontSize: '0.9rem' }}>
-                                Submitted: {new Date(req.createdAt).toLocaleDateString()}
-                            </p>
-                        </div>
-                    ))
                 )}
+
+                {!loading && requests.map((req) => (
+                    <div key={req.id} style={{ backgroundColor: '#111111', padding: '30px', borderRadius: '4px', marginBottom: '20px', borderLeft: '3px solid ' + getStatusColor(req.status) }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
+                            <h3 style={{ fontSize: '1.1rem', fontWeight: '700' }}>{req.jobRole}</h3>
+                            <span style={{ padding: '5px 15px', backgroundColor: getStatusColor(req.status), color: 'white', borderRadius: '3px', fontSize: '0.75rem', fontWeight: '700', letterSpacing: '1px' }}>
+                                {req.status.toUpperCase()}
+                            </span>
+                        </div>
+                        <p style={{ color: '#666', fontSize: '0.9rem', lineHeight: '1.7', marginBottom: '15px' }}>{req.description}</p>
+                        <div style={{ display: 'flex', gap: '30px' }}>
+                            <p style={{ color: '#555', fontSize: '0.85rem' }}>📅 Deadline: {new Date(req.deadline).toLocaleDateString()}</p>
+                            <p style={{ color: '#555', fontSize: '0.85rem' }}>🕐 Submitted: {new Date(req.createdAt).toLocaleDateString()}</p>
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     );

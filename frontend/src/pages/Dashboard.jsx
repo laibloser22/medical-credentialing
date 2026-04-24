@@ -11,54 +11,58 @@ const Dashboard = () => {
     };
 
     return (
-        <div style={{ fontFamily: 'Arial, sans-serif', minHeight: '100vh', backgroundColor: '#f0f4ff' }}>
+        <div style={{ fontFamily: 'Segoe UI, sans-serif', minHeight: '100vh', backgroundColor: '#0a0a0a', color: 'white' }}>
 
             {/* Navbar */}
-            <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 40px', backgroundColor: '#1a73e8', color: 'white' }}>
-                <h1 style={{ margin: 0 }}>Quad Solutions</h1>
-                <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-                    <span>Welcome, {user?.name}! 👋</span>
-                    <button onClick={handleLogout} style={{ padding: '8px 20px', backgroundColor: 'white', color: '#1a73e8', border: 'none', borderRadius: '6px', cursor: 'pointer' }}>
-                        Logout
+            <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 60px', backgroundColor: '#111111', borderBottom: '1px solid #222' }}>
+                <h1 style={{ color: '#e74c3c', fontSize: '1.5rem', fontWeight: '900', letterSpacing: '1px' }}>QUAD<span style={{ color: 'white' }}>SOLUTIONS</span></h1>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                    <span style={{ color: '#666', fontSize: '0.9rem' }}>Welcome, <span style={{ color: 'white', fontWeight: '700' }}>{user?.name}</span></span>
+                    <button onClick={handleLogout} style={{ padding: '8px 20px', backgroundColor: 'transparent', color: '#e74c3c', border: '1px solid #e74c3c', borderRadius: '4px', cursor: 'pointer', fontWeight: '700', fontSize: '0.85rem', letterSpacing: '1px' }}>
+                        LOGOUT
                     </button>
                 </div>
             </nav>
 
-            {/* Dashboard Content */}
-            <div style={{ padding: '40px' }}>
-                <h2 style={{ color: '#1a73e8' }}>My Dashboard</h2>
+            {/* Content */}
+            <div style={{ padding: '60px' }}>
+                <p style={{ color: '#e74c3c', letterSpacing: '3px', fontSize: '0.85rem', fontWeight: '700', marginBottom: '10px' }}>USER PORTAL</p>
+                <h2 style={{ fontSize: '2.5rem', fontWeight: '900', marginBottom: '50px' }}>MY DASHBOARD</h2>
 
-                <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', marginTop: '30px' }}>
+                <div style={{ display: 'flex', gap: '25px', flexWrap: 'wrap' }}>
 
-                    {/* Submit Request Card */}
-                    <div style={{ backgroundColor: 'white', padding: '30px', borderRadius: '10px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', width: '250px', textAlign: 'center' }}>
-                        <h3 style={{ color: '#1a73e8' }}>📝 Submit Request</h3>
-                        <p style={{ color: '#555' }}>Submit a new credentialing request</p>
+                    {/* Submit Request */}
+                    <div style={{ backgroundColor: '#111111', padding: '40px', borderRadius: '4px', width: '280px', borderTop: '3px solid #e74c3c', flex: '1', minWidth: '220px' }}>
+                        <div style={{ fontSize: '2.5rem', marginBottom: '20px' }}>📝</div>
+                        <h3 style={{ fontSize: '1.2rem', fontWeight: '700', marginBottom: '10px' }}>Submit Request</h3>
+                        <p style={{ color: '#666', fontSize: '0.9rem', lineHeight: '1.7', marginBottom: '25px' }}>Submit a new credentialing request with your documents</p>
                         <Link to="/submit-request">
-                            <button style={{ padding: '10px 20px', backgroundColor: '#1a73e8', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer' }}>
-                                Submit Now
+                            <button style={{ padding: '12px 25px', backgroundColor: '#e74c3c', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: '700', fontSize: '0.85rem', letterSpacing: '1px' }}>
+                                SUBMIT NOW →
                             </button>
                         </Link>
                     </div>
 
-                    {/* Track Status Card */}
-                    <div style={{ backgroundColor: 'white', padding: '30px', borderRadius: '10px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', width: '250px', textAlign: 'center' }}>
-                        <h3 style={{ color: '#1a73e8' }}>📊 Track Status</h3>
-                        <p style={{ color: '#555' }}>Check your application status</p>
+                    {/* Track Status */}
+                    <div style={{ backgroundColor: '#111111', padding: '40px', borderRadius: '4px', width: '280px', borderTop: '3px solid #e74c3c', flex: '1', minWidth: '220px' }}>
+                        <div style={{ fontSize: '2.5rem', marginBottom: '20px' }}>📊</div>
+                        <h3 style={{ fontSize: '1.2rem', fontWeight: '700', marginBottom: '10px' }}>Track Status</h3>
+                        <p style={{ color: '#666', fontSize: '0.9rem', lineHeight: '1.7', marginBottom: '25px' }}>Check the status of your submitted applications</p>
                         <Link to="/track-status">
-                            <button style={{ padding: '10px 20px', backgroundColor: '#1a73e8', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer' }}>
-                                Track Now
+                            <button style={{ padding: '12px 25px', backgroundColor: '#e74c3c', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: '700', fontSize: '0.85rem', letterSpacing: '1px' }}>
+                                TRACK NOW →
                             </button>
                         </Link>
                     </div>
 
-                    {/* Contact Support Card */}
-                    <div style={{ backgroundColor: 'white', padding: '30px', borderRadius: '10px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', width: '250px', textAlign: 'center' }}>
-                        <h3 style={{ color: '#1a73e8' }}>💬 Contact Support</h3>
-                        <p style={{ color: '#555' }}>Get help from our team</p>
+                    {/* Contact Support */}
+                    <div style={{ backgroundColor: '#111111', padding: '40px', borderRadius: '4px', width: '280px', borderTop: '3px solid #e74c3c', flex: '1', minWidth: '220px' }}>
+                        <div style={{ fontSize: '2.5rem', marginBottom: '20px' }}>💬</div>
+                        <h3 style={{ fontSize: '1.2rem', fontWeight: '700', marginBottom: '10px' }}>Contact Support</h3>
+                        <p style={{ color: '#666', fontSize: '0.9rem', lineHeight: '1.7', marginBottom: '25px' }}>Get help from our expert credentialing team</p>
                         <Link to="/contact">
-                            <button style={{ padding: '10px 20px', backgroundColor: '#1a73e8', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer' }}>
-                                Contact Us
+                            <button style={{ padding: '12px 25px', backgroundColor: '#e74c3c', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: '700', fontSize: '0.85rem', letterSpacing: '1px' }}>
+                                CONTACT US →
                             </button>
                         </Link>
                     </div>

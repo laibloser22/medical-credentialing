@@ -39,61 +39,61 @@ const AdminRequests = () => {
     };
 
     const getStatusColor = (status) => {
-        if (status === 'approved') return 'green';
-        if (status === 'rejected') return 'red';
-        return 'orange';
+        if (status === 'approved') return '#2ecc71';
+        if (status === 'rejected') return '#e74c3c';
+        return '#f39c12';
     };
 
     return (
-        <div style={{ minHeight: '100vh', backgroundColor: '#f0f4ff', padding: '40px' }}>
+        <div style={{ minHeight: '100vh', backgroundColor: '#0a0a0a', color: 'white', padding: '60px' }}>
             <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
-                    <h2 style={{ color: '#c0392b' }}>All Credentialing Requests</h2>
-                    <button
-                        onClick={() => navigate('/admin/dashboard')}
-                        style={{ padding: '10px 20px', backgroundColor: '#c0392b', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer' }}
-                    >
-                        Back to Dashboard
-                    </button>
-                </div>
+                <button onClick={() => navigate('/admin/dashboard')} style={{ background: 'none', border: 'none', color: '#e74c3c', cursor: 'pointer', marginBottom: '30px', fontSize: '0.9rem', letterSpacing: '1px', fontWeight: '700' }}>
+                    ← BACK TO DASHBOARD
+                </button>
+                <p style={{ color: '#e74c3c', letterSpacing: '3px', fontSize: '0.85rem', fontWeight: '700', marginBottom: '10px' }}>MANAGE APPLICATIONS</p>
+                <h2 style={{ fontSize: '2rem', fontWeight: '900', marginBottom: '40px' }}>ALL REQUESTS</h2>
 
-                {loading && <p>Loading...</p>}
+                {loading && <p style={{ color: '#666' }}>Loading...</p>}
 
                 {!loading && requests.length === 0 && (
-                    <div style={{ backgroundColor: 'white', padding: '40px', borderRadius: '10px', textAlign: 'center' }}>
-                        <p style={{ color: '#555' }}>No requests found!</p>
+                    <div style={{ backgroundColor: '#111111', padding: '60px', borderRadius: '4px', textAlign: 'center', borderTop: '3px solid #e74c3c' }}>
+                        <p style={{ color: '#666' }}>No requests found!</p>
                     </div>
                 )}
 
-                {!loading && requests.length > 0 && requests.map((req) => (
-                    <div key={req.id} style={{ backgroundColor: 'white', padding: '20px', borderRadius: '10px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', marginBottom: '20px' }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <h3 style={{ color: '#c0392b', margin: 0 }}>{req.jobRole}</h3>
-                            <span style={{ padding: '5px 15px', backgroundColor: getStatusColor(req.status), color: 'white', borderRadius: '20px', fontSize: '0.9rem' }}>
+                {!loading && requests.map((req) => (
+                    <div key={req.id} style={{ backgroundColor: '#111111', padding: '30px', borderRadius: '4px', marginBottom: '20px', borderLeft: '3px solid ' + getStatusColor(req.status) }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
+                            <h3 style={{ fontSize: '1.1rem', fontWeight: '700', margin: 0 }}>{req.jobRole}</h3>
+                            <span style={{ padding: '5px 15px', backgroundColor: getStatusColor(req.status), color: 'white', borderRadius: '3px', fontSize: '0.75rem', fontWeight: '700', letterSpacing: '1px' }}>
                                 {req.status.toUpperCase()}
                             </span>
                         </div>
-                        <p style={{ color: '#555', marginTop: '10px' }}>{req.description}</p>
-                        <p style={{ color: '#888', fontSize: '0.9rem' }}>Submitted by: {req.user?.name} ({req.user?.email})</p>
-                        <p style={{ color: '#888', fontSize: '0.9rem' }}>Deadline: {new Date(req.deadline).toLocaleDateString()}</p>
-                        <div style={{ display: 'flex', gap: '10px', marginTop: '15px' }}>
+                        <p style={{ color: '#777', fontSize: '0.9rem', lineHeight: '1.7', marginBottom: '15px' }}>{req.description}</p>
+                        <p style={{ color: '#555', fontSize: '0.85rem', marginBottom: '5px' }}>
+                            👤 {req.user?.name} — {req.user?.email}
+                        </p>
+                        <p style={{ color: '#555', fontSize: '0.85rem', marginBottom: '20px' }}>
+                            📅 Deadline: {new Date(req.deadline).toLocaleDateString()}
+                        </p>
+                        <div style={{ display: 'flex', gap: '10px' }}>
                             <button
                                 onClick={() => updateStatus(req.id, 'approved')}
-                                style={{ padding: '8px 20px', backgroundColor: 'green', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer' }}
+                                style={{ padding: '10px 20px', backgroundColor: '#2ecc71', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: '700', fontSize: '0.85rem', letterSpacing: '1px' }}
                             >
-                                Approve
+                                ✓ APPROVE
                             </button>
                             <button
                                 onClick={() => updateStatus(req.id, 'rejected')}
-                                style={{ padding: '8px 20px', backgroundColor: 'red', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer' }}
+                                style={{ padding: '10px 20px', backgroundColor: '#e74c3c', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: '700', fontSize: '0.85rem', letterSpacing: '1px' }}
                             >
-                                Reject
+                                ✕ REJECT
                             </button>
                             <button
                                 onClick={() => updateStatus(req.id, 'pending')}
-                                style={{ padding: '8px 20px', backgroundColor: 'orange', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer' }}
+                                style={{ padding: '10px 20px', backgroundColor: '#f39c12', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: '700', fontSize: '0.85rem', letterSpacing: '1px' }}
                             >
-                                Pending
+                                ⏳ PENDING
                             </button>
                         </div>
                     </div>
