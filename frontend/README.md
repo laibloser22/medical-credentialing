@@ -1,10 +1,12 @@
 # Medical Credentialing Management System
 
-A full-stack web application for managing medical credentialing operations and client onboarding.
+A full-stack web application I built for managing medical credentialing operations and client onboarding. It allows healthcare providers to submit their credentials, track their application status, and communicate with the admin team.
 
 ## 🔗 Live Demo
 - **Frontend:** https://medical-credentialing.vercel.app
 - **Backend:** https://medical-credentialing-backend.onrender.com
+
+> Note: Backend is hosted on Render free tier — first load may take 30-60 seconds to wake up.
 
 ## 🛠️ Tech Stack
 - **Frontend:** React.js (Vite)
@@ -17,16 +19,16 @@ A full-stack web application for managing medical credentialing operations and c
 ## ✨ Features
 
 ### User Side
-- User registration and login
+- Register and login securely
 - Submit credentialing requests with document upload
 - Track application status in real time
-- Contact support
+- Contact support team directly
 
 ### Admin Side
-- Secure admin login
-- View all credentialing requests
-- Approve / Reject / Pending status updates
-- View all contact messages
+- Secure admin login (separate role)
+- View and manage all credentialing requests
+- Approve, Reject or mark as Pending
+- View all contact messages from clients
 
 ## 🚀 Getting Started
 
@@ -51,7 +53,7 @@ A full-stack web application for managing medical credentialing operations and c
 4. Run database migrations
    `npx prisma migrate dev`
 
-5. Start backend
+5. Start backend server
    `node index.js`
 
 6. Setup Frontend
@@ -66,22 +68,22 @@ A full-stack web application for managing medical credentialing operations and c
 - POST /api/auth/login - Login user
 
 ### Requests
-- POST /api/requests - Submit request
-- GET /api/requests/my-requests - Get user requests
-- GET /api/requests/all - Get all requests (admin)
-- PUT /api/requests/:id/status - Update status (admin)
+- POST /api/requests - Submit new request
+- GET /api/requests/my-requests - Get logged in user's requests
+- GET /api/requests/all - Get all requests (admin only)
+- PUT /api/requests/:id/status - Update request status (admin only)
 
 ### Contact
-- POST /api/contact - Send message
-- GET /api/contact/all - Get all messages (admin)
+- POST /api/contact - Send support message
+- GET /api/contact/all - Get all messages (admin only)
 
 ## 👤 Test Credentials
 
-### Admin
+### Admin Account
 - Email: admin@quadsolutions.com
 - Password: admin123
 
-### User
+### User Account
 - Email: test@gmail.com
 - Password: 123456
 
@@ -89,6 +91,6 @@ A full-stack web application for managing medical credentialing operations and c
 - frontend/ - React.js application
 - backend/ - Node.js + Express API
 - backend/prisma/ - Database schema and migrations
-- backend/src/controllers/ - API controllers
-- backend/src/routes/ - API routes
-- backend/src/middleware/ - Auth middleware
+- backend/src/controllers/ - Business logic
+- backend/src/routes/ - API route definitions
+- backend/src/middleware/ - JWT authentication middleware
