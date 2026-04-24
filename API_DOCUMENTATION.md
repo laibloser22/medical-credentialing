@@ -1,210 +1,112 @@
 # API Documentation
+
 ## Base URL
+https://medical-credentialing-backend.onrender.com
+
+## Notes
+- All protected routes require a Bearer token in the Authorization header
+- Token is received after login or register
+- Admin routes are only accessible by users with admin role
+
 ---
 
-## Authentication APIs
+## Authentication
 
-### Register User
-- **URL:** `/api/auth/register`
-- **Method:** `POST`
-- **Body:**
-```json
+### Register
+POST /api/auth/register
+
+Creates a new user account.
+
+Body:
 {
   "name": "John Doe",
-  "email": "john@example.com",
+  "email": "john@example.com", 
   "password": "123456",
   "role": "user"
 }
-```
-- **Success Response:**
-```json
-{
-  "message": "User registered successfully",
-  "token": "jwt_token_here",
-  "user": {
-    "id": "user_id",
-    "name": "John Doe",
-    "email": "john@example.com",
-    "role": "user"
-  }
-}
-```
 
 ---
 
-### Login User
-- **URL:** `/api/auth/login`
-- **Method:** `POST`
-- **Body:**
-```json
+### Login
+POST /api/auth/login
+
+Logs in an existing user and returns a JWT token.
+
+Body:
 {
   "email": "john@example.com",
   "password": "123456"
 }
-```
-- **Success Response:**
-```json
-{
-  "message": "Login successful",
-  "token": "jwt_token_here",
-  "user": {
-    "id": "user_id",
-    "name": "John Doe",
-    "email": "john@example.com",
-    "role": "user"
-  }
-}
-```
 
 ---
 
-## Credentialing Request APIs
+## Credentialing Requests
 
 ### Submit Request
-- **URL:** `/api/requests`
-- **Method:** `POST`
-- **Auth:** Bearer Token Required
-- **Body:** Form Data
-jobRole: Cardiologist
-description: 10 years experience
-deadline: 2026-05-01
-documents: file (optional)
-- **Success Response:**
-```json
-{
-  "message": "Request submitted successfully",
-  "request": {
-    "id": "request_id",
-    "jobRole": "Cardiologist",
-    "status": "pending"
-  }
-}
-```
+POST /api/requests
+Auth: Required
+
+Submits a new credentialing request with optional document upload.
 
 ---
 
-### Get My Requests (User)
-- **URL:** `/api/requests/my-requests`
-- **Method:** `GET`
-- **Auth:** Bearer Token Required
-- **Success Response:**
-```json
-[
-  {
-    "id": "request_id",
-    "jobRole": "Cardiologist",
-    "description": "10 years experience",
-    "status": "pending",
-    "deadline": "2026-05-01",
-    "createdAt": "2026-04-22"
-  }
-]
-```
+### Get My Requests
+GET /api/requests/my-requests
+Auth: Required
+
+Returns all requests submitted by the logged in user.
 
 ---
 
-### Get All Requests (Admin Only)
-- **URL:** `/api/requests/all`
-- **Method:** `GET`
-- **Auth:** Bearer Token Required (Admin)
-- **Success Response:**
-```json
-[
-  {
-    "id": "request_id",
-    "jobRole": "Cardiologist",
-    "status": "pending",
-    "user": {
-      "name": "John Doe",
-      "email": "john@example.com"
-    }
-  }
-]
-```
+### Get All Requests
+GET /api/requests/all
+Auth: Required (Admin only)
+
+Returns all requests from all users.
 
 ---
 
-### Update Request Status (Admin Only)
-- **URL:** `/api/requests/:id/status`
-- **Method:** `PUT`
-- **Auth:** Bearer Token Required (Admin)
-- **Body:**
-```json
+### Update Status
+PUT /api/requests/:id/status
+Auth: Required (Admin only)
+
+Updates the status of a request to approved, rejected or pending.
+
+Body:
 {
   "status": "approved"
 }
-```
-- **Success Response:**
-```json
-{
-  "message": "Status updated successfully",
-  "request": {
-    "id": "request_id",
-    "status": "approved"
-  }
-}
-```
 
 ---
 
-## Contact APIs
+## Contact
 
 ### Send Message
-- **URL:** `/api/contact`
-- **Method:** `POST`
-- **Body:**
-```json
+POST /api/contact
+
+Sends a support message. No auth required.
+
+Body:
 {
   "name": "John Doe",
   "email": "john@example.com",
-  "message": "I need help with my application"
+  "message": "I need help"
 }
-```
-- **Success Response:**
-```json
-{
-  "message": "Message sent successfully",
-  "contact": {
-    "id": "message_id",
-    "name": "John Doe",
-    "email": "john@example.com",
-    "message": "I need help with my application"
-  }
-}
-```
 
 ---
 
-### Get All Messages (Admin Only)
-- **URL:** `/api/contact/all`
-- **Method:** `GET`
-- **Auth:** Bearer Token Required (Admin)
-- **Success Response:**
-```json
-[
-  {
-    "id": "message_id",
-    "name": "John Doe",
-    "email": "john@example.com",
-    "message": "I need help",
-    "createdAt": "2026-04-22"
-  }
-]
-```
+### Get All Messages
+GET /api/contact/all
+Auth: Required (Admin only)
+
+Returns all contact messages.
 
 ---
-
-## Error Responses
-```json
-{
-  "message": "Error description here"
-}
-```
 
 ## Status Codes
-- `200` - Success
-- `201` - Created
-- `400` - Bad Request
-- `401` - Unauthorized
-- `403` - Forbidden
-- `500` - Server Error
+200 - Success
+201 - Created
+400 - Bad Request
+401 - Unauthorized
+403 - Forbidden (Admin only)
+500 - Server Error
