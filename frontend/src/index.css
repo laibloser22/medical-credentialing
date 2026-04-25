@@ -1,4 +1,4 @@
-* {
+** {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -34,4 +34,39 @@ button {
 button:hover {
   opacity: 0.85;
   transform: translateY(-2px);
+}
+
+/* Responsive Utilities */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none !important;
+  }
+
+  .stack-mobile {
+    flex-direction: column !important;
+  }
+
+  .full-mobile {
+    width: 100% !important;
+    min-width: unset !important;
+  }
+
+  .padding-mobile {
+    padding: 30px 20px !important;
+  }
+
+  .text-mobile {
+    font-size: 1.8rem !important;
+  }
+
+  .hero-mobile {
+    font-size: 2.5rem !important;
+  }
 }
