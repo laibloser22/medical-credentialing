@@ -14,7 +14,7 @@ const Dashboard = () => {
         <div style={{ fontFamily: 'Segoe UI, sans-serif', minHeight: '100vh', backgroundColor: '#0a0a0a', color: 'white' }}>
 
             {/* Navbar */}
-            <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 60px', backgroundColor: '#111111', borderBottom: '1px solid #222' }}>
+            <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 30px', backgroundColor: '#111111', borderBottom: '1px solid #222', flexWrap: 'wrap', gap: '15px' }}>
                 <h1 style={{ color: '#e74c3c', fontSize: '1.5rem', fontWeight: '900', letterSpacing: '1px' }}>QUAD<span style={{ color: 'white' }}>SOLUTIONS</span></h1>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
                     <span style={{ color: '#666', fontSize: '0.9rem' }}>Welcome, <span style={{ color: 'white', fontWeight: '700' }}>{user?.name}</span></span>
@@ -25,7 +25,7 @@ const Dashboard = () => {
             </nav>
 
             {/* Content */}
-            <div style={{ padding: '60px' }}>
+            <div style={{ padding: 'clamp(20px, 5vw, 60px)' }}>
                 <p style={{ color: '#e74c3c', letterSpacing: '3px', fontSize: '0.85rem', fontWeight: '700', marginBottom: '10px' }}>USER PORTAL</p>
                 <h2 style={{ fontSize: '2.5rem', fontWeight: '900', marginBottom: '50px' }}>MY DASHBOARD</h2>
 

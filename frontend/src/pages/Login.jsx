@@ -34,7 +34,7 @@ const Login = () => {
     };
 
     return (
-        <div style={{ minHeight: '100vh', display: 'flex', backgroundColor: '#0a0a0a' }}>
+        <div style={{ minHeight: '100vh', display: 'flex', backgroundColor: '#0a0a0a', flexDirection: window.innerWidth < 768 ? 'column' : 'row' }}>
 
             {/* Left Side */}
             <div style={{ flex: 1, backgroundColor: '#111111', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '60px', borderRight: '1px solid #222' }}>

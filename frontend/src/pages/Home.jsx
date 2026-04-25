@@ -5,7 +5,7 @@ const Home = () => {
         <div style={{ fontFamily: 'Segoe UI, sans-serif', backgroundColor: '#0a0a0a', color: 'white', minHeight: '100vh' }}>
 
             {/* Navbar */}
-            <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 60px', backgroundColor: '#111111', borderBottom: '1px solid #e74c3c', position: 'sticky', top: 0, zIndex: 100 }}>
+            <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 30px', backgroundColor: '#111111', borderBottom: '1px solid #e74c3c', position: 'sticky', top: 0, zIndex: 100, flexWrap: 'wrap', gap: '15px' }}>
                 <h1 style={{ color: '#e74c3c', fontSize: '1.8rem', fontWeight: '800', letterSpacing: '1px' }}>QUAD<span style={{ color: 'white' }}>SOLUTIONS</span></h1>
                 <div style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
                     <Link to="/" style={{ color: '#ccc', fontSize: '0.95rem', letterSpacing: '1px' }}>HOME</Link>
@@ -19,7 +19,7 @@ const Home = () => {
             </nav>
 
             {/* Hero Section */}
-            <div style={{ padding: '120px 60px', background: 'linear-gradient(135deg, #111111 0%, #1a0a0a 100%)', borderBottom: '1px solid #222' }}>
+            <div style={{ padding: 'clamp(60px, 10vw, 120px) clamp(20px, 5vw, 60px)', background: 'linear-gradient(135deg, #111111 0%, #1a0a0a 100%)', borderBottom: '1px solid #222' }}>
                 <div style={{ maxWidth: '700px' }}>
                     <p style={{ color: '#e74c3c', letterSpacing: '3px', fontSize: '0.85rem', fontWeight: '700', marginBottom: '20px' }}>MEDICAL CREDENTIALING EXPERTS</p>
                     <h2 style={{ fontSize: '3.5rem', fontWeight: '900', lineHeight: '1.1', marginBottom: '25px' }}>
@@ -44,7 +44,7 @@ const Home = () => {
             </div>
 
             {/* Stats Section */}
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '0', backgroundColor: '#111111', borderBottom: '1px solid #222' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '0', backgroundColor: '#111111', borderBottom: '1px solid #222', flexWrap: 'wrap' }}>
                 {[
                     { number: '500+', label: 'PROVIDERS CREDENTIALED' },
                     { number: '98%', label: 'SUCCESS RATE' },
@@ -59,7 +59,7 @@ const Home = () => {
             </div>
 
             {/* Services Section */}
-            <div style={{ padding: '80px 60px', backgroundColor: '#0a0a0a' }}>
+            <div style={{ padding: 'clamp(40px, 8vw, 80px) clamp(20px, 5vw, 60px)', backgroundColor: '#0a0a0a' }}>
                 <p style={{ color: '#e74c3c', letterSpacing: '3px', fontSize: '0.85rem', fontWeight: '700', marginBottom: '15px' }}>WHAT WE OFFER</p>
                 <h2 style={{ fontSize: '2.5rem', fontWeight: '900', marginBottom: '50px' }}>OUR SERVICES</h2>
                 <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
@@ -78,7 +78,7 @@ const Home = () => {
             </div>
 
             {/* Why Choose Us */}
-            <div style={{ padding: '80px 60px', backgroundColor: '#111111', borderTop: '1px solid #222', borderBottom: '1px solid #222' }}>
+            <div style={{ padding: 'clamp(40px, 8vw, 80px) clamp(20px, 5vw, 60px)', backgroundColor: '#111111', borderTop: '1px solid #222', borderBottom: '1px solid #222' }}>
                 <p style={{ color: '#e74c3c', letterSpacing: '3px', fontSize: '0.85rem', fontWeight: '700', marginBottom: '15px' }}>WHY US</p>
                 <h2 style={{ fontSize: '2.5rem', fontWeight: '900', marginBottom: '50px' }}>WHY CHOOSE QUAD SOLUTIONS?</h2>
                 <div style={{ display: 'flex', gap: '30px', flexWrap: 'wrap' }}>
@@ -98,7 +98,7 @@ const Home = () => {
             </div>
 
             {/* Contact Section */}
-            <div style={{ padding: '80px 60px', backgroundColor: '#0a0a0a', textAlign: 'center' }}>
+            <div style={{ padding: 'clamp(40px, 8vw, 80px) clamp(20px, 5vw, 60px)', backgroundColor: '#0a0a0a', textAlign: 'center' }}>
                 <p style={{ color: '#e74c3c', letterSpacing: '3px', fontSize: '0.85rem', fontWeight: '700', marginBottom: '15px' }}>GET IN TOUCH</p>
                 <h2 style={{ fontSize: '2.5rem', fontWeight: '900', marginBottom: '20px' }}>HAVE QUESTIONS?</h2>
                 <p style={{ color: '#777', marginBottom: '40px', fontSize: '1rem' }}>Our team is ready to help you get started</p>

@@ -14,7 +14,7 @@ const AdminDashboard = () => {
         <div style={{ fontFamily: 'Segoe UI, sans-serif', minHeight: '100vh', backgroundColor: '#0a0a0a', color: 'white' }}>
 
             {/* Navbar */}
-            <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 60px', backgroundColor: '#111111', borderBottom: '1px solid #e74c3c' }}>
+            <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 30px', backgroundColor: '#111111', borderBottom: '1px solid #e74c3c', flexWrap: 'wrap', gap: '15px' }}>
                 <div>
                     <h1 style={{ color: '#e74c3c', fontSize: '1.5rem', fontWeight: '900', letterSpacing: '1px', margin: 0 }}>QUAD<span style={{ color: 'white' }}>SOLUTIONS</span></h1>
                     <p style={{ color: '#666', fontSize: '0.75rem', letterSpacing: '2px', margin: '3px 0 0 0' }}>ADMIN PANEL</p>
@@ -28,7 +28,7 @@ const AdminDashboard = () => {
             </nav>
 
             {/* Content */}
-            <div style={{ padding: '60px' }}>
+            <div style={{ padding: 'clamp(20px, 5vw, 60px)' }}>
                 <p style={{ color: '#e74c3c', letterSpacing: '3px', fontSize: '0.85rem', fontWeight: '700', marginBottom: '10px' }}>ADMIN PORTAL</p>
                 <h2 style={{ fontSize: '2.5rem', fontWeight: '900', marginBottom: '50px' }}>ADMIN DASHBOARD</h2>
 

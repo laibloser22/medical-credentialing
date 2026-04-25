@@ -32,7 +32,7 @@ const Contact = () => {
     const labelStyle = { display: 'block', marginBottom: '8px', color: '#999', fontSize: '0.85rem', letterSpacing: '1px' };
 
     return (
-        <div style={{ minHeight: '100vh', backgroundColor: '#0a0a0a', color: 'white', padding: '60px' }}>
+        <div style={{ minHeight: '100vh', backgroundColor: '#0a0a0a', color: 'white', padding: 'clamp(20px, 5vw, 60px)' }}>
             <div style={{ maxWidth: '650px', margin: '0 auto' }}>
                 <button onClick={() => navigate('/dashboard')} style={{ background: 'none', border: 'none', color: '#e74c3c', cursor: 'pointer', marginBottom: '30px', fontSize: '0.9rem', letterSpacing: '1px', fontWeight: '700' }}>
                     ← BACK TO DASHBOARD
